@@ -849,9 +849,22 @@ async def get_predictions(
         )
         for item in records
     ]
-# =============================
-# DELETE SINGLE PREDICTION
-# =============================
+# CLEAR ALL PREDICTIONS FIRST
+@api_router.delete("/predictions/clear")
+async def clear_predictions(
+    user: dict = Depends(get_current_user)
+):
+
+    result = await db.predictions.delete_many(
+        {
+            "user_id": user["user_id"]
+        }
+    )
+
+    return {
+        "message": "All prediction records deleted",
+        "deleted": result.deleted_count
+    }
 # =============================
 # DELETE SINGLE PREDICTION
 # =============================
@@ -903,21 +916,7 @@ async def delete_prediction(
 
 
  
-@api_router.delete("/predictions/clear")
-async def clear_predictions(
-    user: dict = Depends(get_current_user)
-):
 
-    result = await db.predictions.delete_many(
-        {
-            "user_id": user["user_id"]
-        }
-    )
-
-    return {
-        "message": "All prediction records deleted",
-        "deleted": result.deleted_count
-    }
 # =============================
 # MODEL INFO
 # =============================
@@ -947,8 +946,9 @@ from pydantic import BaseModel
 class ChatRequest(BaseModel):
     message: str
 
-from  fastapi import APIRouter, HTTPException, Header, Cookie, Response, Depends
-from fastapi.responses import JSONResponse
+
+
+
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
