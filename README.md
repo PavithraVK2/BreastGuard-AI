@@ -1,23 +1,39 @@
 # BreastGuard AI
-AI-Based Breast Cancer Classification using SVM
+
+## AI-Based Breast Cancer Classification and Prediction System Using SVM
+
+BreastGuard AI is a machine learning-based healthcare application that classifies breast tumors as Benign or Malignant using Support Vector Machine (SVM).
 
 ## Features
+
 - User Authentication
 - Patient Management
-- SVM Prediction
+- Breast Cancer Prediction
+- SVM Machine Learning Model
 - Explainable AI
 - Analytics Dashboard
+- Prediction History
 - Report Generation
 
 ## Tech Stack
-Frontend:
-HTML, CSS, JavaScript, Bootstrap/Tailwind
 
-Backend:
-Python FastAPI/Flask
+### Frontend
+- HTML
+- CSS
+- JavaScript
+- Bootstrap / Tailwind CSS
 
-Machine Learning:
-Scikit-learn SVM
+### Backend
+- Python
+- FastAPI
 
-Database:
-MongoDB/MySQL
+### Machine Learning
+- Scikit-learn
+- Support Vector Machine (SVM)
+- Pandas
+- NumPy
+
+### Database
+- MongoDB
+
+## Project Structure
