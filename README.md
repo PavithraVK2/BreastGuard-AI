@@ -67,3 +67,20 @@ The system provides secure patient management, AI-based prediction, explainable 
 ---
 
 # 📂 Project Structure
+BreastGuard-AI/
+│
+├── backend/
+│ ├── server.py
+│ ├── model/
+│ └── requirements.txt
+│
+├── frontend/
+│ ├── public/
+│ │ └── screenshots/
+│ └── src/
+│
+├── model/
+│ └── SVM model files
+│
+├── README.md
+└── requirements.txt
