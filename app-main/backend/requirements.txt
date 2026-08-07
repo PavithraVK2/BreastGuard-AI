@@ -6,6 +6,7 @@ python-jose
 passlib
 bcrypt
 python-multipart
+uvicorn
 
 scikit-learn==1.5.2
 numpy==1.26.4
