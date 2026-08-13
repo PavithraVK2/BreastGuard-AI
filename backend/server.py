@@ -1057,8 +1057,10 @@ app.add_middleware(
         "http://127.0.0.1:3000",
         "http://localhost:3001",
         "http://127.0.0.1:3001",
+        "https://breastguard-ai.vercel.app",
+        "https://*.vercel.app",
     ],
-    allow_origin_regex=r"http://localhost(:\d+)?",
+    allow_origin_regex=r"http://localhost(:\d+)?|https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
