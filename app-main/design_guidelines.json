@@ -1,0 +1,86 @@
+{
+  "theme": "light",
+  "typography": {
+    "headings": {
+      "family": "Outfit, Work Sans",
+      "rules": "DO NOT use Inter or generic sans. Use tracking-tight (-0.025em) and font-medium to font-bold. Limit scale to text-4xl maximum for headers.",
+      "css_import": "@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');"
+    },
+    "body": {
+      "family": "IBM Plex Sans",
+      "rules": "Highly legible sans-serif for medical data. Size 16px min. Use tracking-normal."
+    }
+  },
+  "colors": {
+    "palette_name": "Clinical Precision (Medical Blue Theme)",
+    "background": "#F0F9FF",
+    "surface": "#FFFFFF",
+    "primary": "#0284C7",
+    "text_primary": "#0F172A",
+    "text_secondary": "#475569",
+    "accent_success": "#10B981",
+    "accent_alert": "#EF4444",
+    "rules": "Strict adherence to medical trust blue. Reserve RED (#EF4444) EXCLUSIVELY for Malignant predictions or high-risk alerts. Use GREEN (#10B981) for Benign predictions. Never use pure black."
+  },
+  "visual_enhancers": {
+    "surface_styles": "Flat backgrounds with delicate 1px subtle border (border-slate-200), NO default heavy shadows. Only apply soft shadow-sm on hover for interactive elements.",
+    "icons": "Use Phosphor Icons via CDN. Consistent duotone or regular weights.",
+    "textures": "Subtle grain overlay for hero/about sections to elevate the 'premium' feel."
+  },
+  "grids": {
+    "dashboard_grid": "High Density Grid: grid-cols-1 md:grid-cols-3 lg:grid-cols-4. Tight gaps (gap-4 or gap-6). Use optical alignment for clinical numbers."
+  },
+  "layouts": {
+    "spacing": "Generous Spacing Philosophy. Use p-6 or p-8 inside cards. The 30-feature form MUST be organized into logical grid groups (e.g., Mean, SE, Worst) rather than a single massive vertical list.",
+    "navigation": "Fixed sidebar or highly visible top navigation with transparent glassmorphism only if there is a hero background, otherwise solid white."
+  },
+  "components": {
+    "buttons": "Rounded-md or pill-shaped. Explicit hover states (e.g., hover:bg-sky-700 hover:text-white). Do not rely on color inheritance.",
+    "cards": "Neumorphic 'Tactile' variant selectively applied: flat background, 1px sharp border, light ambient shadow.",
+    "forms": "Use structured inputs with clear focus states (focus:ring-2 focus:ring-sky-500). Label typography must be Uppercase + Tiny + Wide Spacing (tracking-wider text-xs)."
+  },
+  "motion": {
+    "rules": "Use discrete CSS transitions. transition-colors duration-200, transition-transform duration-200. NEVER use 'transition: all'. Apply subtle translateY(-2px) on card hover."
+  },
+  "accessibility": {
+    "contrast": "APCA/WCAG AA compliance required. Minimum 4.5:1 ratio for body text. All interactive elements MUST include data-testid. Don't rely solely on red/green; include text labels for Benign/Malignant."
+  },
+  "media": {
+    "charts": "Use Chart.js for data visualization in Vanilla JS. Format tooltips to be highly readable.",
+    "images": "Medical professionals and AI abstractions"
+  },
+  "image_urls": {
+    "about_hero": {
+      "url": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwYXJ0aWZpY2lhbCUyMGludGVsbGlnZW5jZXxlbnwwfHx8fDE3ODQ1NjkxOTd8MA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract AI brain over circuit board, for hero backgrounds or about page.",
+      "category": "background"
+    },
+    "about_collaboration": {
+      "url": "https://images.pexels.com/photos/5452230/pexels-photo-5452230.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Medical professionals analyzing data.",
+      "category": "content"
+    }
+  },
+  "instructions_to_main_agent": [
+    "This is a Flask + HTML/Vanilla JS application.",
+    "Integrate Tailwind CSS via CDN (<script src='https://cdn.tailwindcss.com'></script>) and configure the font families inside the script tag.",
+    "Use Chart.js for dashboard statistics and AI confidence rendering.",
+    "The 30-feature prediction form must be designed intuitively (Bento grid style or multi-column layout), categorized by Mean, Standard Error, and Worst feature metrics to prevent user fatigue.",
+    "Implement clear visual hierarchy: Data freshness and confidence scores should be scan-speed readable.",
+    "Apply data-testid to ALL forms, buttons, and prediction result containers."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur).",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; }.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER use AI assistant Emoji characters like robot, brain, etc. for icons. Use proper SVG libraries.",
+    "Every interaction needs micro-animations - hover states, transitions, entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Missing categories = main agent will use placeholder text which is FORBIDDEN. Use the provided image URLs."
+  ]
+}

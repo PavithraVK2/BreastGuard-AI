@@ -1,20 +1,86 @@
-# Here are your Instructions
-## 📸 Application Screenshots
+# 🩺 BreastGuard AI  
+## AI-Based Breast Cancer Classification and Prediction System Using SVM
 
-### Login Page
-![Login](frontend/public/screenshots/login.png)
+BreastGuard AI is an intelligent healthcare application that uses **Machine Learning and Artificial Intelligence** to classify breast tumors as **Benign or Malignant** using a **Support Vector Machine (SVM)** model.
 
-### Home Page
-![Home](frontend/public/screenshots/home.png)
+The system provides secure patient management, AI-based prediction, explainable results, analytics visualization, and automated report generation to support early breast cancer analysis.
 
-### Dashboard
-![Dashboard](frontend/public/screenshots/dashboard.png.png)
+---
 
-### Prediction Page
-![Prediction](frontend/public/screenshots/prediction.png)
+## ✨ Features
 
-### Reports Page
-![Reports](frontend/public/screenshots/reports.png)
+### 🔐 User Authentication
+- Secure user registration and login
+- Role-based access management
 
-### Glossary Page
-![Glossary](frontend/public/screenshots/glossary.png)
+### 👩‍⚕️ Patient Management
+- Add and manage patient details
+- Maintain patient prediction history
+
+### 🧠 Breast Cancer Prediction
+- SVM-based tumor classification
+- Predicts:
+  - ✅ Benign Tumor
+  - ⚠️ Malignant Tumor
+
+### 🤖 Machine Learning Model
+- Support Vector Machine (SVM)
+- Scikit-learn based implementation
+- High accuracy classification
+
+### 🔍 Explainable AI
+- Provides understandable prediction insights
+- Helps users analyze model decisions
+
+### 📊 Analytics Dashboard
+- Visual representation of prediction data
+- Statistical analysis and insights
+
+### 📄 Report Generation
+- Generate downloadable prediction reports
+- Maintain medical records
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- HTML5
+- CSS3
+- JavaScript
+- Bootstrap
+- Tailwind CSS
+
+## Backend
+- Python
+- FastAPI
+
+## Machine Learning
+- Scikit-learn
+- Support Vector Machine (SVM)
+- Pandas
+- NumPy
+
+## Database
+- MongoDB
+
+---
+
+# 📂 Project Structure
+BreastGuard-AI/
+│
+├── backend/
+│ ├── server.py
+│ ├── model/
+│ └── requirements.txt
+│
+├── frontend/
+│ ├── public/
+│ │ └── screenshots/
+│ └── src/
+│
+├── model/
+│ └── SVM model files
+│
+├── README.md
+└── requirements.txt
