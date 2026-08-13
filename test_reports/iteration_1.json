@@ -1,0 +1,43 @@
+{
+  "summary": "First-finish smoke test of Breast Cancer AI Classification app. Backend auth (register, session via Bearer/cookie), dashboard stats, predictions POST/GET, model info all pass. Frontend flow verified end-to-end: landing -> register -> dashboard -> 30-feature prediction form (3 groups) -> result page (Malignant, 76.5% confidence, recommendation) -> history table -> about page. Protected routes correctly redirect to /login when unauthenticated.",
+  "tested_scope": ["frontend", "backend", "auth", "integration"],
+  "passed": [
+    "GET / (landing) returns 200 with hero + feature cards (AI-Powered Analysis, 98% Accuracy, Secure & Private)",
+    "POST /api/auth/register creates user, returns session_token, sets cookie",
+    "GET /api/auth/me with Bearer token returns 200 user profile",
+    "GET /api/dashboard/stats returns totals + 0.97 accuracy",
+    "POST /api/predictions with 30-float array returns prediction with result/confidence",
+    "GET /api/predictions returns user history array",
+    "GET /api/model/info returns loaded=true, n_features=30",
+    "UI: Login page has Login/Register tabs, Google button visible",
+    "UI: Registration form (Full Name/Email/Password) creates account and lands on /dashboard",
+    "UI: Dashboard shows welcome, stats (Total/Benign/Malignant/Accuracy 97%), Recent Predictions, nav links",
+    "UI: Prediction form renders 30 number inputs organized under Mean / Standard Error / Worst",
+    "UI: Submitting 30 features + patient name shows /result page with diagnosis, confidence bar, recommendation, prediction ID",
+    "UI: History page shows submitted prediction in table with patient/result/confidence/date",
+    "UI: About page renders SVM model info",
+    "Protected routes (/dashboard) redirect to /login when cookies/localStorage cleared"
+  ],
+  "failed": [
+    {
+      "area": "backend/security",
+      "issue": "GET /api/auth/me returns the bcrypt password_hash in the user payload. Sensitive field should be stripped from response.",
+      "evidence": "curl /api/auth/me -> {\"user_id\":\"...\",\"email\":\"...\",\"password_hash\":\"$2b$12$TET5uO4W15...\",...}",
+      "priority": "MEDIUM"
+    },
+    {
+      "area": "test_credentials",
+      "issue": "Seeded test users doctor@test.com / admin@test.com listed in /app/memory/test_credentials.md do NOT exist in DB. Login returns 401 Invalid credentials. Either seed them at startup or update the credentials file.",
+      "evidence": "POST /api/auth/login {email: doctor@test.com, password: test123} -> 401 Invalid credentials",
+      "priority": "MEDIUM"
+    }
+  ],
+  "action_items": [
+    "Strip password_hash (and any sensitive fields) from GET /api/auth/me response (project by ,{'_id':0,'password_hash':0} or use a Pydantic response_model).",
+    "Seed the documented test users (doctor@test.com / admin@test.com) on startup, OR update /app/memory/test_credentials.md to reflect that fresh registration is required."
+  ],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true,
+  "notes": "Google OAuth button visible; full OAuth flow not exercised (requires real Google login, per request). SVM predictions functional end-to-end. No hot-reload, code, or dependency changes made during testing."
+}
