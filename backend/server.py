@@ -146,6 +146,18 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="BreastGuard AI API", lifespan=lifespan)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+    "https://breast-guard-ai-git-main-pavithra-vk-2.vercel.app",
+    "https://breastguard-ai.vercel.app",
+    "http://localhost:3000",
+    "http://localhost:5173",
+],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 api_router = APIRouter(
@@ -1043,24 +1055,10 @@ async def model_ready():
 
 
 
-# =============================
-# CORS
-# =============================
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:3001",
-        "http://127.0.0.1:3001",
-        "https://breast-guard-ai.vercel.app",
-    ],
-    allow_origin_regex=r"https://.*\.vercel\.app",
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
+
+
 # =============================
 # RUN SERVER
 # =============================
