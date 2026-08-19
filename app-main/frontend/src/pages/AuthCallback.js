@@ -37,7 +37,7 @@ const AuthCallback = () => {
           }
         );
 
-        login(response.data);
+        login(response.data, response.data.session_token);
         toast.success('Successfully logged in!');
         navigate('/dashboard', { state: { user: response.data }, replace: true });
       } catch (error) {

@@ -12,7 +12,6 @@ import History from '@/pages/History';
 import About from '@/pages/About';
 import FeatureGlossary from '@/pages/FeatureGlossary';
 import ProtectedRoute from '@/components/ProtectedRoute';
-import ChatWidget from '@/components/ChatWidget';
 import { useAuth } from '@/contexts/AuthContext';
 import '@/App.css';
 
@@ -35,7 +34,6 @@ function AppRouter() {
         <Route path="/result" element={<ProtectedRoute><PredictionResult /></ProtectedRoute>} />
         <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
       </Routes>
-      {user && <ChatWidget />}
     </>
   );
 }

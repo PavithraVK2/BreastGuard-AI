@@ -165,10 +165,10 @@ const Dashboard = () => {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="mb-5 flex items-center justify-between">
+        <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h1
-              className="text-2xl font-bold text-[#0F172A]"
+              className="text-2xl sm:text-3xl font-bold text-[#0F172A]"
               style={{ fontFamily: 'Outfit, sans-serif' }}
               data-testid="dashboard-title"
             >
@@ -178,7 +178,7 @@ const Dashboard = () => {
           </div>
           <Link
             to="/prediction"
-            className="px-4 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white rounded-md text-sm font-medium transition-colors duration-200"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 bg-[#0284C7] hover:bg-[#0369A1] text-white rounded-md text-sm font-medium transition-colors duration-200"
             data-testid="new-prediction-button"
           >
             + New Diagnosis

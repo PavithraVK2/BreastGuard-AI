@@ -200,7 +200,7 @@ const PredictionForm = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="mb-6">
           <h1
-            className="text-3xl font-bold text-[#0F172A] mb-1"
+            className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-1"
             style={{ fontFamily: 'Outfit, sans-serif' }}
             data-testid="prediction-form-title"
           >
@@ -226,7 +226,7 @@ const PredictionForm = () => {
                   <p className="text-xs text-[#475569]">30 highly detailed cancer features categorized dynamically</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <button
                   onClick={() => applyPreset('benign')}
                   className="flex items-center space-x-1.5 px-3 py-1.5 bg-[#D1FAE5] text-[#059669] border border-[#10B981] rounded-full text-xs font-semibold hover:bg-[#A7F3D0] transition-colors duration-200"
@@ -290,16 +290,16 @@ const PredictionForm = () => {
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-4 border-t border-slate-200">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-4 border-t border-slate-200">
               <p className="text-xs text-[#475569]">
                 Drag sliders or use presets to populate case values.
               </p>
-              <div className="flex space-x-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:space-x-3">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => navigate('/dashboard')}
-                  className="border-slate-200 hover:bg-slate-50 transition-colors duration-200"
+                  className="w-full sm:w-auto border-slate-200 hover:bg-slate-50 transition-colors duration-200"
                   data-testid="cancel-button"
                 >
                   Cancel
@@ -308,7 +308,7 @@ const PredictionForm = () => {
                   type="button"
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="bg-[#0284C7] hover:bg-[#0369A1] text-white rounded-md px-8 transition-colors duration-200"
+                  className="w-full sm:w-auto bg-[#0284C7] hover:bg-[#0369A1] text-white rounded-md px-8 transition-colors duration-200"
                   data-testid="predict-button"
                 >
                   {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Run AI Diagnosis'}

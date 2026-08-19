@@ -56,52 +56,52 @@ const response = await axios.get(`${API}/predictions`, {
 
 const handleDelete = async (predictionId) => {
 
-  console.log("DELETE ID FROM FRONTEND:", predictionId);
+    console.log("DELETE ID FROM FRONTEND:", predictionId);
 
-  try {
-    const token = localStorage.getItem("session_token");
+    try {
+      const token = localStorage.getItem("session_token");
 
-    await axios.delete(
-      `${API}/predictions/${predictionId}`,
-      {
-        withCredentials: true,
-        headers: {
-          Authorization: `Bearer ${token}`
+      await axios.delete(
+        `${API}/predictions/${predictionId}`,
+        {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         }
-      }
-    );
+      );
 
-    toast.success("Record deleted");
-    setPredictions(prev =>
-      prev.filter(p => p.prediction_id !== predictionId)
-    );
-    fetchPredictions();
+      toast.success("Record deleted");
+      setPredictions(prev =>
+        prev.filter(p => p.prediction_id !== predictionId)
+      );
+      fetchPredictions();
 
-  } catch(err) {
-    console.log(error.response?.data);
-    toast.error(error.response?.data?.detail || "Delete failed");
-  }
-};
+    } catch (err) {
+      console.log(err.response?.data);
+      toast.error(err.response?.data?.detail || "Delete failed");
+    }
+  };
 
   const handleClearAll = async () => {
-  try {
-    const token = localStorage.getItem("session_token");
+    try {
+      const token = localStorage.getItem("session_token");
 
-    await axios.delete(`${API}/predictions/clear`, {
-      withCredentials: true,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+      await axios.delete(`${API}/predictions/clear`, {
+        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
-    toast.success('All records cleared');
-    setPredictions([]);
+      toast.success('All records cleared');
+      setPredictions([]);
 
-  } catch (error) {
-    console.error(error);
-    toast.error(error.response?.data?.detail || "Failed to clear records");
-  }
-};
+    } catch (error) {
+      console.error(error);
+      toast.error(error.response?.data?.detail || "Failed to clear records");
+    }
+  };
 
   const handleExportCSV = () => {
     if (predictions.length === 0) {
@@ -155,10 +155,10 @@ const handleDelete = async (predictionId) => {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between mb-6">
           <div>
             <h1
-              className="text-3xl font-bold text-[#0F172A] mb-1"
+              className="text-2xl sm:text-3xl font-bold text-[#0F172A] mb-1"
               style={{ fontFamily: 'Outfit, sans-serif' }}
               data-testid="history-title"
             >
@@ -169,7 +169,7 @@ const handleDelete = async (predictionId) => {
             </p>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <button
@@ -217,8 +217,8 @@ const handleDelete = async (predictionId) => {
 
         <div className="bg-white rounded-lg border border-slate-200 p-5">
           {/* Search and Filter row */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="relative flex-1 max-w-md">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between mb-5">
+            <div className="relative w-full md:flex-1 md:max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#94A3B8]" />
               <Input
                 data-testid="search-input"
@@ -230,12 +230,12 @@ const handleDelete = async (predictionId) => {
               />
             </div>
 
-            <div className="flex items-center space-x-3">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
               <label className="text-xs uppercase tracking-wider text-[#475569] font-medium">
                 Classification Filter:
               </label>
               <Select value={filter} onValueChange={setFilter}>
-                <SelectTrigger className="w-48 border-slate-200" data-testid="classification-filter">
+                <SelectTrigger className="w-full sm:w-48 border-slate-200" data-testid="classification-filter">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>

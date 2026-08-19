@@ -36,12 +36,15 @@ const response = await axios.get(`${API}/auth/me`, {
   }, [checkAuth]);
 
   const login = (userData, token) => {
-  localStorage.setItem("session_token", token);
-  setUser({
-    name: userData.name,
-    session_token: token,
-  });
-};
+    const sessionToken = token || userData?.session_token;
+    if (sessionToken) {
+      localStorage.setItem("session_token", sessionToken);
+    }
+    setUser({
+      ...userData,
+      session_token: sessionToken,
+    });
+  };
   const logout = async () => {
     try {
       const token = localStorage.getItem("session_token");
